@@ -179,34 +179,36 @@
 </head>
 
     <script>
-    function startUniverse() {
-        var audio = document.getElementById("myAudio");
-        audio.play().catch(e => console.log("Audio interaction error"));
+let audio = document.getElementById("myAudio");
+let homeScreen = document.getElementById("home-screen");
 
-        var home = document.getElementById("home-screen");
-        home.style.opacity = "0";
-        home.style.filter = "blur(20px)";
-        setTimeout(function(){
-            home.style.display = "none";
-        }, 1000);
-    }
+function startUniverse() {
+    audio.play().catch(e => console.log("Audio interaction error"));
 
-    // STOPS MUSIC WHEN YOU LEAVE THE TAB
-    document.addEventListener("visibilitychange", function() {
-        var audio = document.getElementById("myAudio");
-        if (document.hidden) {
-            audio.pause();
-        } else if (document.getElementById("home-screen").style.display === "none") {
-            audio.play();
-        }
-    });
+    homeScreen.style.opacity = "0";
+    homeScreen.style.filter = "blur(20px)";
 
-    // STOPS MUSIC IF YOU CLOSE THE BROWSER OR NAVIGATE AWAY
-    window.onbeforeunload = function() {
-        var audio = document.getElementById("myAudio");
+    setTimeout(() => {
+        homeScreen.style.display = "none";
+    }, 1000);
+}
+
+// Pause audio when tab is not visible
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
         audio.pause();
-    };
-</script>
+    } else {
+        if (homeScreen.style.display === "none") {
+            audio.play().catch(()=>{});
+        }
+    }
+});
+
+// Stop audio when leaving page
+window.addEventListener("beforeunload", () => {
+    audio.pause();
+});
+    </script>
 
 <body>
 
