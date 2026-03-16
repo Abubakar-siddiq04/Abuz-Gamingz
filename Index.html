@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abuz Gaming | Rich Look</title>
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark: #0a0a0a;
+            --card-bg: #161616;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* --- PREMIUM HOME SCREEN --- */
+        #home-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, #1a1a1a 0%, #000 100%);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+        }
+
+        #home-screen h1 {
+            font-size: clamp(2.5rem, 10vw, 6rem);
+            font-weight: 100;
+            letter-spacing: 15px;
+            color: #fff;
+            text-transform: uppercase;
+            margin: 0;
+            background: linear-gradient(to right, #fff 20%, var(--gold) 50%, #fff 80%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+        }
+
+        #home-screen p {
+            color: #888;
+            letter-spacing: 5px;
+            font-size: 0.7rem;
+            margin-top: 30px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            animation: breathing 2s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        @keyframes breathing {
+            0%, 100% { opacity: 0.3; transform: scale(0.95); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        .bg-animate {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a1500 0%, #050505 100%);
+            z-index: -1;
+        }
+
+        .bg-animate::after {
+            content: "";
+            position: absolute;
+            width: 200%; height: 200%;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+            animation: move 60s linear infinite;
+            opacity: 0.4;
+        }
+
+        @keyframes move {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-50%, -50%); }
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 0;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        h1 { 
+            color: var(--gold); 
+            letter-spacing: 5px; 
+            font-size: 3.5rem; 
+            margin: 0; 
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 40px 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid #333;
+        }
+
+        .card:hover { 
+            transform: translateY(-10px); 
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .card img { 
+            width: 100%; 
+            height: 380px; 
+            object-fit: cover; 
+            border-bottom: 1px solid #222;
+        }
+
+        .info { padding: 20px; }
+        h3 { color: var(--gold); margin: 0 0 10px 0; font-size: 1.2rem; }
+        
+        .price-row { display: flex; justify-content: space-between; margin: 8px 0; font-size: 1rem; }
+        .price-row span { color: var(--gold); font-weight: bold; }
+
+        .deposit {
+            background: rgba(212, 175, 55, 0.1);
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin: 40px auto;
+            max-width: 600px;
+            border: 1px dashed var(--gold);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(to top, #000, transparent);
+        }
+
+        .insta-btn {
+            display: inline-block;
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            border: 1px solid var(--gold);
+            padding: 12px 30px;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .insta-btn:hover {
+            background: var(--gold);
+            color: var(--dark);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<audio id="myAudio" loop>
+  <source src="Home page.mp3" type="audio/mpeg">
+</audio>
+
+<div id="home-screen" onclick="startUniverse()">
+    <h1>ABUZ UNIVERSE</h1>
+    <p>Tap to Enter the Experience</p>
+</div>
+
+<div class="bg-animate"></div>
+
+<header>
+    <h1>ABUZ GAMING UNIVERSE</h1>
+    <p style="color: #888; letter-spacing: 2px;">PREMIUM DISC RENTALS</p>
+</header>
+
+<div class="container">
+    <div class="card">
+        <img src="un1.jpg" alt="Uncharted 4">
+        <div class="info">
+            <h3>Uncharted 4</h3>
+            <div class="price-row">1 Day: <span>₹40</span></div>
+            <div class="price-row">3 Days: <span>₹100</span></div>
+            <div class="price-row">1 Week: <span>₹180</span></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="dy1.jpg" alt="Dying Light 2">
+        <div class="info">
+            <h3>Dying Light 2</h3>
+            <div class="price-row">1 Day: <span>₹60</span></div>
+            <div class="price-row">3 Days: <span>₹150</span></div>
+            <div class="price-row">1 Week: <span>₹250</span></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="c1.jpg" alt="Minecraft">
+        <div class="info">
+            <h3>Minecraft</h3>
+            <div class="price-row">1 Day: <span>₹40</span></div>
+            <div class="price-row">3 Days: <span>₹100</span></div>
+            <div class="price-row">1 Week: <span>₹180</span></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="bio1.jpg" alt="RE7">
+        <div class="info">
+            <h3>Resident Evil 7</h3>
+            <div class="price-row">1 Day: <span>₹50</span></div>
+            <div class="price-row">3 Days: <span>₹120</span></div>
+            <div class="price-row">1 Week: <span>₹200</span></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="r1.jpg" alt="RE Village">
+        <div class="info">
+            <h3>Resident Evil Village</h3>
+            <div class="price-row">1 Day: <span>₹60</span></div>
+            <div class="price-row">3 Days: <span>₹150</span></div>
+            <div class="price-row">1 Week: <span>₹250</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="deposit">
+    <h3>💡 Security Deposit: ₹500 (Refundable)</h3>
+    <p>Safety first! This protects your gear and covers the disc value.</p>
+</div>
+
+<div class="footer">
+    <a href="https://www.instagram.com/aesthetic_corezzz" target="_blank" class="insta-btn">
+        DM on Instagram: @aesthetic_corezzz
+    </a>
+</div>
+
+<script>
+    function startUniverse() {
+        var audio = document.getElementById("myAudio");
+        // Audio volume (optional)
+        audio.volume = 0.6;
+        
+        audio.play().catch(e => console.log("Playback blocked until user interaction."));
+
+        var home = document.getElementById("home-screen");
+        home.style.opacity = "0";
+        home.style.filter = "blur(20px)";
+        setTimeout(function(){
+            home.style.display = "none";
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
